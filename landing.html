@@ -54,7 +54,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="canonical" href="https://varnerlab.github.io/BSTModelKitDocumentation/landing.html/landing.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Installation and Requirements" href="docs/installation.html" />
+    <link rel="next" title="Installation" href="docs/installation.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -117,17 +117,17 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="docs/installation.html">
-   Installation and Requirements
+   Installation
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="docs/examples.html">
-   Examples
+   Quick start and examples
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="docs/api.html">
-   Application Programming Interface (API)
+   API
   </a>
  </li>
 </ul>
@@ -285,12 +285,43 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#package-documentation">
+   Package documentation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#funding-and-disclamer">
+     Funding and Disclamer
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -302,6 +333,26 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#package-documentation">
+   Package documentation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#funding-and-disclamer">
+     Funding and Disclamer
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -311,17 +362,23 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="introduction">
 <h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h1>
-<p>This is a small sample book to give you a feel for how book content is
-structured. It shows off a few of the major file types, as well as some sample content.
-It does not go in-depth into any particular topic - check out <a class="reference external" href="https://jupyterbook.org">the Jupyter Book documentation</a> for more information.</p>
-<p>Check out the content pages bundled with this sample book to see more.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">BSTModelKit.jl</span></code> package provides methods to construct, solve and analyze <a class="reference external" href="https://en.wikipedia.org/wiki/Biochemical_systems_theory">Biochemical Systems Theory (BST) models</a> of biochemical reaction networks.</p>
+<section id="package-documentation">
+<h2>Package documentation<a class="headerlink" href="#package-documentation" title="Permalink to this headline">#</a></h2>
+<p>Checkout these pages to install and use the <code class="docutils literal notranslate"><span class="pre">BSTModelKit.jl</span></code> package:</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="docs/installation.html">Installation and Requirements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="docs/examples.html">Examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="docs/api.html">Application Programming Interface (API)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/examples.html">Quick start and examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/api.html">API</a></li>
 </ul>
 </div>
+<section id="funding-and-disclamer">
+<h3>Funding and Disclamer<a class="headerlink" href="#funding-and-disclamer" title="Permalink to this headline">#</a></h3>
+<p>The work described here was supported by following grants: The Interaction of Basal Risk, Pharmacological Ovulation Induction, Pregnancy and Delivery on Hemostatic Balance  NIH NHLBI R-33 HL 141787 (PI’s <a class="reference external" href="https://www.uvmhealth.org/medcenter/provider/ira-m-bernstein-md">Bernstein</a> , <a class="reference external" href="https://www.med.uvm.edu/biochemistry/lab_orfeo_research">Orfeo</a>) and the Pregnancy Phenotype and Predisposition to Preeclampsia NIH NHLBI R01 HL 71944 (PI <a class="reference external" href="https://www.uvmhealth.org/medcenter/provider/ira-m-bernstein-md">Bernstein</a>).</p>
+<p>This software is proved “AS IS” without warranty of any kind, express or implied, including but not limited to warranties of merchantability, fitness for a particular purpose, and non-infringement. In no event shall the authors or copyright holders be liable for any claim, damages, or other liability, whether in action or contract, tort or otherwise, arising from, out of, or in connection with the software or the use of other dealings in the software.</p>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -354,7 +411,7 @@ It does not go in-depth into any particular topic - check out <a class="referenc
     <a class='right-next' id="next-link" href="docs/installation.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Installation and Requirements</p>
+        <p class="prev-next-title">Installation</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
