@@ -1,2 +1,2 @@
-# Application Programming Interface (API)
+# API
 Fill me in
