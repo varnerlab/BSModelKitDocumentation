@@ -4,6 +4,7 @@
 format: jb-book
 root: landing
 chapters:
+- file: docs/background
 - file: docs/installation
 - file: docs/examples
 - file: docs/api

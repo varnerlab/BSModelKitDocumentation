@@ -1,2 +1,2 @@
-# Quick start and examples
+# Quick start
 Fill me in
