@@ -24,7 +24,7 @@ In this section, we will:
 
 (content:references:bstmodelkit-installation)=
 ## BSTModelKit.jl installation
-If you already have [Julia](https://julialang.org) installed on your system, then you can direcrly install `BSTModelKit.jl` using the package mode in the [Julia REPL](https://docs.julialang.org/en/v1/stdlib/REPL/#The-Julian-mode). The [package mode](https://docs.julialang.org/en/v1/stdlib/REPL/#Pkg-mode) allows the user to add, delete or update external [Julia](https://julialang.org) packages. A user enters [package mode](https://docs.julialang.org/en/v1/stdlib/REPL/#Pkg-mode) by hitting the ``]`` key which brings up the [package mode](https://docs.julialang.org/en/v1/stdlib/REPL/#Pkg-mode) prompt ``pkg>``. At this prompt, users can manage the packages that are installed globally, or in the local project environment.
+If you already have [Julia](https://julialang.org) installed on your system, then you can directly install `BSTModelKit.jl` using the package mode in the [Julia REPL](https://docs.julialang.org/en/v1/stdlib/REPL/#The-Julian-mode). The [package mode](https://docs.julialang.org/en/v1/stdlib/REPL/#Pkg-mode) allows the user to add, delete, or update external [Julia](https://julialang.org) packages. A user enters [package mode](https://docs.julialang.org/en/v1/stdlib/REPL/#Pkg-mode) by hitting the ``]`` key which brings up the [package mode](https://docs.julialang.org/en/v1/stdlib/REPL/#Pkg-mode) prompt ``pkg>``. At this prompt, users can manage the packages that are installed globally, or in the local project environment.
 
 ```{figure} ./figs/Fig-pkg-mode-terminal.png
 ---
@@ -76,7 +76,7 @@ export PATH="$PATH:/path/to/<Julia directory>/bin"
 ### Windows
 Although [Julia](https://julialang.org) can run on Windows directly, the teaching team asks that all Windows users install [the Windows Subsystem for Linux (WSL)](https://docs.microsoft.com/en-us/windows/wsl/about), along with the latest [Ubuntu](https://ubuntu.com) distribution, to run [Julia](https://julialang.org) in a Linux environment.  Instructions on how to install WSL can be found [here](https://docs.microsoft.com/en-us/windows/wsl/install).
 
-Once [the Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/about) has been installed, [Julia](https://julialang.org) can installed following the [Generic Linux instructions](https://julialang.org/downloads/platform/#linux_and_freebsd).
+Once [the Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/about) has been installed, [Julia](https://julialang.org) can be installed following the [Generic Linux instructions](https://julialang.org/downloads/platform/#linux_and_freebsd).
 
 (content:references:vscode-installation)=
 ### Installation and Requirments for VSCode
@@ -95,7 +95,7 @@ To download Visual Studio Code, click on the download button and follow the on-s
 
 Once VSCode has been installed, we need to install the [Julia extension for VSCode](https://code.visualstudio.com/docs/languages/julia). The [Julia extension for VSCode](https://code.visualstudio.com/docs/languages/julia) enables syntax highligting, access to a modern debugger, built-in dynamic autocompletion, inline results, plot pane, integrated REPL, variable view, code navigation, and many other advanced language features.
 
-To install the [Julia extension for VSCode](https://code.visualstudio.com/docs/languages/julia), open VSCode and navigate to the [extensions panel](https://code.visualstudio.com/docs/editor/extension-marketplace). In the search field, enter `Julia` and select the green install button on the `Julia language support` extension ({numref}`fig-vscode-julia-ext`):
+To install the [Julia extension for VSCode](https://code.visualstudio.com/docs/languages/julia), open VSCode and navigate to the [extensions panel](https://code.visualstudio.com/docs/editor/extension-marketplace). In the search field, enter `Julia` and select the green install button on the `Julia Language Support` extension ({numref}`fig-vscode-julia-ext`):
 
 ```{figure} ./figs/Fig-vscode-julia-ext.png
 ---
