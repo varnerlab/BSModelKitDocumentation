@@ -18,38 +18,55 @@ $\mu$ denotes the specific growth rate.
 
 ### Setup environment
 
+```
 import BSTModelKit.jl
+```
 
 ### Build the model object from the model file 
 The BST model file hold information to build the model equation. But it does not contain any information about parameter values. We build the model file using the build method: 
 
+```
 model_dictionary = build(joinpath(_PATH_TO_MODELS, "Feedback.bst"));
-
+```
+```
 model_dictionary
-
+```
+```
 model_dictionary["list_of_dynamic_species"]
-
+```
+```
 G = model_dictionary["G"]
+```
 
 "Setting initial condition"
+```
 icv = [10.0, 0.1, 0.1, 1.1, 0.0];
 model_dictionary["initial_condition_array"] = icv;
+```
 
+"Setting values of parameters"
+```
 model_dictionary["G"]
-
+```
+```
 model_dictionary["total_species_list"]
-
+```
+```
 model_dictionary["S"]
-
+```
+```
 model_dictionary["α"] = [0.0, 10.0, 10.0, 10.0, 0.1, 0.1];
-
+```
+```
 model_dictionary["static_factors_array"] = [0.1, 0.1, 0.1];
-
+```
 ### Set test values for the model parameters in the $G$-matrix and $\alpha$-vector
-
+```
 (T, X, Z) = evaluate(model_dictionary; tspan=(0.0,100.0), Δt = 0.1);
-
+```
+```
 X
-
+```
+```
 plot(T,X)
-
+```
