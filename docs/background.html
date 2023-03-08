@@ -54,7 +54,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="canonical" href="https://varnerlab.github.io/BSTModelKitDocumentation/landing.html/docs/background.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Installation instructions" href="installation.html" />
+    <link rel="next" title="Installation Instructions" href="installation.html" />
     <link rel="prev" title="Introduction" href="../landing.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -123,7 +123,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="installation.html">
-   Installation instructions
+   Installation Instructions
   </a>
  </li>
  <li class="toctree-l1">
@@ -291,12 +291,46 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#background">
+   Background
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bstmodelkit-jl">
+   BSTModelKit.jl
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#additional-resources">
+   Additional Resources
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -308,6 +342,29 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#background">
+   Background
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bstmodelkit-jl">
+   BSTModelKit.jl
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#additional-resources">
+   Additional Resources
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -317,7 +374,22 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="biochemical-systems-theory">
 <h1>Biochemical Systems Theory<a class="headerlink" href="#biochemical-systems-theory" title="Permalink to this headline">#</a></h1>
-<p>Fill me in.</p>
+<section id="background">
+<h2>Background<a class="headerlink" href="#background" title="Permalink to this headline">#</a></h2>
+<p>One of the tenets of systems biology is the development of biochemical networks that can describe intricate mechanisms. Ordinary Differential Equations are widley used in this regard. However, <a class="reference external" href="https://doi.org/10.1109/MCS.2009.932926">linear models</a> run the disadvantage of generalism, and a lack of accuracy &amp; efficiency.</p>
+<p><a class="reference external" href="https://doi.org/10.1016/0895-7177(88)90553-5">S-System Theory &amp; Power Law Formalism</a> was pioneered in the 1950s by <code class="docutils literal notranslate"><span class="pre">Michael</span> <span class="pre">Savageau</span></code> in an effort to represent organizationally complex (biological) systems &amp; retain mathematical amenability. Moreover, the <code class="docutils literal notranslate"><span class="pre">S-System</span> <span class="pre">theory</span></code> is capable of aggregating a network of reactions, representating equations in matrix form, and transforming networks using a well-defined algorithm.</p>
+<p>The core principle lies in the ability of <code class="docutils literal notranslate"><span class="pre">non-linear</span> <span class="pre">rational</span> <span class="pre">functions</span></code> to be appropriately represented &amp; approximated by a straight-line in a <code class="docutils literal notranslate"><span class="pre">log-log</span></code> plot. This allows for the deduction of the rate of a process using the <code class="docutils literal notranslate"><span class="pre">Taylor</span> <span class="pre">series</span></code> in a logarithmic space. Logarithmic transformation has been shown to facilitate steady-state solutions &amp; improve the efficiency of dynamic solutions.</p>
+</section>
+<section id="bstmodelkit-jl">
+<h2>BSTModelKit.jl<a class="headerlink" href="#bstmodelkit-jl" title="Permalink to this headline">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">BSTModelKit.jl</span></code> package is an implementation of the <a class="reference external" href="https://doi.org/10.1016/0895-7177(88)90553-5">S-System &amp; Power Law Formalism</a> in the <a class="reference external" href="https://julialang.org">Julia</a> programming language. Instructions for installation can be found <a class="reference internal" href="installation.html"><span class="doc std std-doc">here</span></a>.</p>
+</section>
+<section id="additional-resources">
+<h2>Additional Resources<a class="headerlink" href="#additional-resources" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>A detailed account on the recasting of nonlinear differential equations to S-System form can be found <a class="reference external" href="https://doi.org/10.1016/0025-5564(87)90035-6">here</a></p></li>
+</ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -357,7 +429,7 @@ title="Print to PDF"
     <a class='right-next' id="next-link" href="installation.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Installation instructions</p>
+        <p class="prev-next-title">Installation Instructions</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

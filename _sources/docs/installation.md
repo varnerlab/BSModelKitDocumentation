@@ -13,18 +13,24 @@ kernelspec:
 # Installation Instructions
 
 ## Introduction
-The `BSTModelKit.jl` package is written the [Julia](https://julialang.org) programming language. [Julia](https://julialang.org) is a dynamically typed compiled programming language developed at [MIT](https://julia.mit.edu) for general purpose computing. [Julia](https://julialang.org) has a number of interesting features, and is [an open source project available under the MIT license](https://github.com/JuliaLang/julia). [Julia](https://julialang.org) is available on all major computing platforms and operating sytstems (macOS, Windows and Linux). In addition, in this course we'll be using [Visual Studio Code (VS Code)](https://code.visualstudio.com) to compose and run our [Julia](https://julialang.org) programs.
+The `BSTModelKit.jl` package is written the [Julia](https://julialang.org) programming language. [Julia](https://julialang.org) is a dynamically typed compiled programming language developed at [MIT](https://julia.mit.edu) for general purpose computing. [Julia](https://julialang.org) has a number of interesting features, and is [an open source project available under the MIT license](https://github.com/JuliaLang/julia). [Julia](https://julialang.org) is available on all major computing platforms and operating sytstems (macOS, Windows, and Linux).
 
-In this section, we will:
-* Discuss the {ref}`content:references:bstmodelkit-installation`
-* Discuss the {ref}`content:references:julia-installation`
-* Discuss the {ref}`content:references:vscode-installation`
+In this section, we will discuss the {ref}`content:references:bstmodelkit-installation`
 
 ---
 
 (content:references:bstmodelkit-installation)=
 ## BSTModelKit.jl installation
-If you already have [Julia](https://julialang.org) installed on your system, then you can direcrly install `BSTModelKit.jl` using the package mode in the [Julia REPL](https://docs.julialang.org/en/v1/stdlib/REPL/#The-Julian-mode). The [package mode](https://docs.julialang.org/en/v1/stdlib/REPL/#Pkg-mode) allows the user to add, delete or update external [Julia](https://julialang.org) packages. A user enters [package mode](https://docs.julialang.org/en/v1/stdlib/REPL/#Pkg-mode) by hitting the ``]`` key which brings up the [package mode](https://docs.julialang.org/en/v1/stdlib/REPL/#Pkg-mode) prompt ``pkg>``. At this prompt, users can manage the packages that are installed globally, or in the local project environment.
+If you do not have [Julia](https://julialang.org) installed on your system, you will need to follow the [Julia installation instructions](content:references:julia-installation) before installing this package. If you already have [Julia](https://julialang.org) installed on your system, then you can directly install `BSTModelKit.jl` using the package mode in the [Julia REPL](https://docs.julialang.org/en/v1/stdlib/REPL/#The-Julian-mode). The [package mode](https://docs.julialang.org/en/v1/stdlib/REPL/#Pkg-mode) allows the user to add, delete, or update external [Julia](https://julialang.org) packages. A user enters [package mode](https://docs.julialang.org/en/v1/stdlib/REPL/#Pkg-mode) by hitting the ``]`` key which brings up the [package mode](https://docs.julialang.org/en/v1/stdlib/REPL/#Pkg-mode) prompt ``pkg>``. At this prompt, users can manage the packages that are installed globally, or in the local project environment.
+
+While in package mode, to install `BSTModelKit.jl`, issue the command:
+  ```
+  (@v1.8.x) pkg> add BSTModelKit
+  ```
+To use `BSTModelKit.jl` in your projects, issue the command:
+  ```
+  julia> using BSTModelKit
+  ```
 
 ```{figure} ./figs/Fig-pkg-mode-terminal.png
 ---
@@ -38,7 +44,7 @@ The [package mode](https://docs.julialang.org/en/v1/stdlib/REPL/#Pkg-mode) in th
 ### Installation and Requirements for Julia
 [Julia](https://julialang.org), which runs on all major systems, can be downloaded from the [Julia downloads page](https://julialang.org/downloads/). Select the appropriate download version, and then follow the instructions for installation. 
 
-For Windows users, before downloading [Julia](https://julialang.org), please see the specific instructions below.
+<!-- For Windows users, before downloading [Julia](https://julialang.org), please see the specific instructions below.
 
 ### macOS
 On macOS, a ``julia-1.x.x-mac64.dmg`` installation file is contained in the download, which contains the executable ``Julia-1.x.app``. Installation of [Julia](https://julialang.org) on macOS works the same as any other Mac software: drag the Julia-1.x.app to Applications Folder. [Julia](https://julialang.org) runs on macOS 10.9 Mavericks or later.
@@ -76,7 +82,7 @@ export PATH="$PATH:/path/to/<Julia directory>/bin"
 ### Windows
 Although [Julia](https://julialang.org) can run on Windows directly, the teaching team asks that all Windows users install [the Windows Subsystem for Linux (WSL)](https://docs.microsoft.com/en-us/windows/wsl/about), along with the latest [Ubuntu](https://ubuntu.com) distribution, to run [Julia](https://julialang.org) in a Linux environment.  Instructions on how to install WSL can be found [here](https://docs.microsoft.com/en-us/windows/wsl/install).
 
-Once [the Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/about) has been installed, [Julia](https://julialang.org) can installed following the [Generic Linux instructions](https://julialang.org/downloads/platform/#linux_and_freebsd).
+Once [the Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/about) has been installed, [Julia](https://julialang.org) can be installed following the [Generic Linux instructions](https://julialang.org/downloads/platform/#linux_and_freebsd).
 
 (content:references:vscode-installation)=
 ### Installation and Requirments for VSCode
@@ -95,7 +101,7 @@ To download Visual Studio Code, click on the download button and follow the on-s
 
 Once VSCode has been installed, we need to install the [Julia extension for VSCode](https://code.visualstudio.com/docs/languages/julia). The [Julia extension for VSCode](https://code.visualstudio.com/docs/languages/julia) enables syntax highligting, access to a modern debugger, built-in dynamic autocompletion, inline results, plot pane, integrated REPL, variable view, code navigation, and many other advanced language features.
 
-To install the [Julia extension for VSCode](https://code.visualstudio.com/docs/languages/julia), open VSCode and navigate to the [extensions panel](https://code.visualstudio.com/docs/editor/extension-marketplace). In the search field, enter `Julia` and select the green install button on the `Julia language support` extension ({numref}`fig-vscode-julia-ext`):
+To install the [Julia extension for VSCode](https://code.visualstudio.com/docs/languages/julia), open VSCode and navigate to the [extensions panel](https://code.visualstudio.com/docs/editor/extension-marketplace). In the search field, enter `Julia` and select the green install button on the `Julia Language Support` extension ({numref}`fig-vscode-julia-ext`):
 
 ```{figure} ./figs/Fig-vscode-julia-ext.png
 ---
@@ -103,7 +109,7 @@ height: 460px
 name: fig-vscode-julia-ext
 ---
 The [Julia extension for VSCode](https://code.visualstudio.com/docs/languages/julia) can be installed from the Extension tab of [Visual Studio Code (VSCode)](https://code.visualstudio.com) or by accessing the Extensions from the Preferences menu.
-```
+``` -->
 
 ---
 
