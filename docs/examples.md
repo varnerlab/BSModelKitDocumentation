@@ -25,21 +25,15 @@ import BSTModelKit.jl
 ### Build the model object from the model file 
 The BST model file hold information to build the model equation. But it does not contain any information about parameter values. We build the model file using the build method: 
 
-```
+```julia
 model_dictionary = build(joinpath(_PATH_TO_MODELS, "Feedback.bst"));
-```
-```
 model_dictionary
-```
-```
 model_dictionary["list_of_dynamic_species"]
-```
-```
-G = model_dictionary["G"]
-```
 
-"Setting initial condition"
-```
+# Get the gain matrix
+G = model_dictionary["G"]
+
+# Setting initial condition
 icv = [10.0, 0.1, 0.1, 1.1, 0.0];
 model_dictionary["initial_condition_array"] = icv;
 ```

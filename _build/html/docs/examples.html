@@ -438,21 +438,16 @@ For example, we need to model a metabolic network that consists of a species set
 <section id="build-the-model-object-from-the-model-file">
 <h3>Build the model object from the model file<a class="headerlink" href="#build-the-model-object-from-the-model-file" title="Permalink to this headline">#</a></h3>
 <p>The BST model file hold information to build the model equation. But it does not contain any information about parameter values. We build the model file using the build method:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model_dictionary</span> <span class="o">=</span> <span class="n">build</span><span class="p">(</span><span class="n">joinpath</span><span class="p">(</span><span class="n">_PATH_TO_MODELS</span><span class="p">,</span> <span class="s2">&quot;Feedback.bst&quot;</span><span class="p">));</span>
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model_dictionary</span>
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model_dictionary</span><span class="p">[</span><span class="s2">&quot;list_of_dynamic_species&quot;</span><span class="p">]</span>
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">G</span> <span class="o">=</span> <span class="n">model_dictionary</span><span class="p">[</span><span class="s2">&quot;G&quot;</span><span class="p">]</span>
-</pre></div>
-</div>
-<p>“Setting initial condition”</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">icv</span> <span class="o">=</span> <span class="p">[</span><span class="mf">10.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">];</span>
-<span class="n">model_dictionary</span><span class="p">[</span><span class="s2">&quot;initial_condition_array&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">icv</span><span class="p">;</span>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">model_dictionary</span> <span class="o">=</span> <span class="n">build</span><span class="p">(</span><span class="n">joinpath</span><span class="p">(</span><span class="n">_PATH_TO_MODELS</span><span class="p">,</span> <span class="s">&quot;Feedback.bst&quot;</span><span class="p">));</span>
+<span class="n">model_dictionary</span>
+<span class="n">model_dictionary</span><span class="p">[</span><span class="s">&quot;list_of_dynamic_species&quot;</span><span class="p">]</span>
+
+<span class="c"># Get the gain matrix</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">model_dictionary</span><span class="p">[</span><span class="s">&quot;G&quot;</span><span class="p">]</span>
+
+<span class="c"># Setting initial condition</span>
+<span class="n">icv</span> <span class="o">=</span> <span class="p">[</span><span class="mf">10.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">];</span>
+<span class="n">model_dictionary</span><span class="p">[</span><span class="s">&quot;initial_condition_array&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">icv</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>“Setting values of parameters”</p>
