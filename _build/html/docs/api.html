@@ -290,12 +290,36 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#methods">
+   Methods
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -307,6 +331,19 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#methods">
+   Methods
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -319,43 +356,90 @@ title="Print to PDF"
 <p><code class="docutils literal notranslate"><span class="pre">AbstractBSTModel</span></code> - Type</p>
 <p><code class="docutils literal notranslate"><span class="pre">BSTModel</span></code> - Type
 need to describe</p>
-<p><code class="docutils literal notranslate"><span class="pre">BSTModelKit.build</span></code> - Method</p>
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">build</span><span class="p">(</span><span class="n">path</span><span class="o">::</span><span class="kt">String</span><span class="p">)</span><span class="o">::</span><span class="kt">BSTModel</span>
+<hr class="docutils" />
+<section id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">BSTModelKit.build</span></code></p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">build</span><span class="p">(</span><span class="n">path</span><span class="o">::</span><span class="kt">String</span><span class="p">)</span><span class="o">::</span><span class="kt">BSTModel</span><span class="w"></span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">build()</span></code> function takes the path to the model file as a <code class="docutils literal notranslate"><span class="pre">String</span></code> argument and returns a model dictionary of type <code class="docutils literal notranslate"><span class="pre">BSTModel</span></code>. Compatibile filetypes include .bst, .txt, .jld2, .dat, .net, and .toml files.
-need to describe how to properly format model file
-returns a model dictionary (need to describe components)</p>
-<p><code class="docutils literal notranslate"><span class="pre">BSTModelKit.save</span></code> - Method</p>
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">save</span><span class="p">(</span><span class="n">path</span><span class="o">::</span><span class="kt">String</span><span class="p">,</span> <span class="n">model</span><span class="o">::</span><span class="kt">T</span><span class="p">)</span><span class="o">::</span><span class="kt">Bool</span> <span class="k">where</span> <span class="kt">T</span> <span class="o">&lt;:</span> <span class="kt">AbstractBSTModel</span>
+<p>The <code class="docutils literal notranslate"><span class="pre">build()</span></code> function takes the path to the model file as a <code class="docutils literal notranslate"><span class="pre">String</span></code> argument and returns a model dictionary of type <code class="docutils literal notranslate"><span class="pre">BSTModel</span></code>. Compatibile filetypes include .bst, .txt, .jld2, .dat, .net, and .toml files.</p>
+<p><strong>Model File Format</strong></p>
+<p>~insert~</p>
+<p><strong>Return</strong></p>
+<p>returns a <code class="docutils literal notranslate"><span class="pre">BSTModel</span></code> object with the following components:</p>
+<ul class="simple">
+<li><p><strong>number of dynamic states:</strong> number of dynamic species listed in the model file</p></li>
+<li><p><strong>number of static states:</strong> number of static species listed in the model file</p></li>
+<li><p><strong>list of dynamic species:</strong> names of dynamic species listed in the model file</p></li>
+<li><p><strong>list of static factors:</strong> names of static species listed in the model file</p></li>
+<li><p><strong>total species list:</strong> a combined list of the names of dynamic and static species</p></li>
+<li><p><strong>static factors array:</strong> conditions of static factors</p></li>
+<li><p><strong>initial condition array:</strong> initial value of each dynamic species</p></li>
+<li><p><strong>list of reactions:</strong> list of reactions in the model</p></li>
+<li><p><strong>S:</strong> stoichiometric matrix in the form <code class="docutils literal notranslate"><span class="pre">MxR</span></code> where <code class="docutils literal notranslate"><span class="pre">M</span></code> is the dynamic species and <code class="docutils literal notranslate"><span class="pre">R</span></code> is the reactions they partake in</p></li>
+<li><p><strong>G:</strong> matrix containing information about the exponents of each (dynamic and static) species</p></li>
+<li><p><strong>α:</strong> rate constants of each reaction in the model</p></li>
+</ul>
+<hr class="docutils" />
+<p><code class="docutils literal notranslate"><span class="pre">BSTModelKit.save</span></code></p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">save</span><span class="p">(</span><span class="n">path</span><span class="o">::</span><span class="kt">String</span><span class="p">,</span><span class="w"> </span><span class="n">model</span><span class="o">::</span><span class="kt">T</span><span class="p">)</span><span class="o">::</span><span class="kt">Bool</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="kt">T</span><span class="w"> </span><span class="o">&lt;:</span><span class="w"> </span><span class="kt">AbstractBSTModel</span><span class="w"></span>
 </pre></div>
 </div>
 <p>path must end in .jld2
 returns true (good) or error</p>
-<p><code class="docutils literal notranslate"><span class="pre">BSTModelKit.evaluate</span></code> - Method</p>
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">evaluate</span><span class="p">(</span><span class="n">model</span><span class="o">::</span><span class="kt">BSTModel</span><span class="p">;</span> <span class="n">tspan</span><span class="o">::</span><span class="kt">Tuple</span><span class="p">{</span><span class="kt">Float64</span><span class="p">,</span><span class="kt">Float64</span><span class="p">}</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">20.0</span><span class="p">),</span>
-    <span class="n">Δt</span><span class="o">::</span><span class="kt">Float64</span> <span class="o">=</span> <span class="mf">0.01</span><span class="p">,</span> <span class="n">input</span><span class="o">::</span><span class="kt">Union</span><span class="p">{</span><span class="kt">Nothing</span><span class="p">,</span><span class="kt">Function</span><span class="p">}</span> <span class="o">=</span> <span class="nb">nothing</span><span class="p">)</span><span class="o">::</span><span class="kt">Tuple</span><span class="p">{</span><span class="kt">Array</span><span class="p">{</span><span class="kt">Float64</span><span class="p">,</span><span class="mi">1</span><span class="p">},</span> <span class="kt">Array</span><span class="p">{</span><span class="kt">Float64</span><span class="p">,</span><span class="mi">2</span><span class="p">}}</span>
+<hr class="docutils" />
+<p><code class="docutils literal notranslate"><span class="pre">BSTModelKit.evaluate</span></code></p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">evaluate</span><span class="p">(</span><span class="n">model</span><span class="o">::</span><span class="kt">BSTModel</span><span class="p">;</span><span class="w"> </span><span class="n">tspan</span><span class="o">::</span><span class="kt">Tuple</span><span class="p">{</span><span class="kt">Float64</span><span class="p">,</span><span class="kt">Float64</span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">20.0</span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="n">Δt</span><span class="o">::</span><span class="kt">Float64</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.01</span><span class="p">,</span><span class="w"> </span><span class="n">input</span><span class="o">::</span><span class="kt">Union</span><span class="p">{</span><span class="kt">Nothing</span><span class="p">,</span><span class="kt">Function</span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">nothing</span><span class="p">)</span><span class="o">::</span><span class="kt">Tuple</span><span class="p">{</span><span class="kt">Array</span><span class="p">{</span><span class="kt">Float64</span><span class="p">,</span><span class="mi">1</span><span class="p">},</span><span class="w"> </span><span class="kt">Array</span><span class="p">{</span><span class="kt">Float64</span><span class="p">,</span><span class="mi">2</span><span class="p">}}</span><span class="w"></span>
 </pre></div>
 </div>
-<p>returns (T,X) as Tuple{Array{Float64,1}, Array{Float64,2}}</p>
-<p><code class="docutils literal notranslate"><span class="pre">BSTModelKit.steadystate</span></code> - Method</p>
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">steadystate</span><span class="p">(</span><span class="n">model</span><span class="o">::</span><span class="kt">BSTModel</span><span class="p">;</span> <span class="n">tspan</span><span class="o">::</span><span class="kt">Tuple</span><span class="p">{</span><span class="kt">Float64</span><span class="p">,</span><span class="kt">Float64</span><span class="p">}</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">20.0</span><span class="p">),</span>
-    <span class="n">Δt</span><span class="o">::</span><span class="kt">Float64</span> <span class="o">=</span> <span class="mf">0.01</span><span class="p">,</span> <span class="n">input</span><span class="o">::</span><span class="kt">Union</span><span class="p">{</span><span class="kt">Nothing</span><span class="p">,</span><span class="kt">Function</span><span class="p">}</span> <span class="o">=</span> <span class="nb">nothing</span><span class="p">)</span>
+<p>The <code class="docutils literal notranslate"><span class="pre">evaluate()</span></code> function uses an ODE solver to solve the system of differential equations described by the model <code class="docutils literal notranslate"><span class="pre">BSTModel</span></code>.</p>
+<p><strong>Fields</strong></p>
+<ul class="simple">
+<li><p><strong>model:</strong> built using the <code class="docutils literal notranslate"><span class="pre">build()</span></code> function as a <code class="docutils literal notranslate"><span class="pre">BSTModel</span></code></p></li>
+<li><p><strong>tspan:</strong> time-span in which the solver is required to run as a <code class="docutils literal notranslate"><span class="pre">Tuple{Float64,Float64}</span></code> (default values for tspan are (0.0,20.0))</p></li>
+<li><p><strong>Δt:</strong> time-steps at which the solver is required to save solutions as a <code class="docutils literal notranslate"><span class="pre">Float64</span></code> object (default is 0.01)</p></li>
+<li><p><strong>input</strong>: <code class="docutils literal notranslate"><span class="pre">Union{Nothing,Function}</span></code> object</p></li>
+</ul>
+<p><strong>Return</strong></p>
+<ul class="simple">
+<li><p>(T,X) as <code class="docutils literal notranslate"><span class="pre">Tuple{Array{Float64,1},</span> <span class="pre">Array{Float64,2}}</span></code> object. T contains the various times at which the solver recorded the solution, and X is a matrix which contains the solution to the ODE system.</p></li>
+</ul>
+<hr class="docutils" />
+<p><code class="docutils literal notranslate"><span class="pre">BSTModelKit.steadystate</span></code></p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">steadystate</span><span class="p">(</span><span class="n">model</span><span class="o">::</span><span class="kt">BSTModel</span><span class="p">;</span><span class="w"> </span><span class="n">tspan</span><span class="o">::</span><span class="kt">Tuple</span><span class="p">{</span><span class="kt">Float64</span><span class="p">,</span><span class="kt">Float64</span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">20.0</span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="n">Δt</span><span class="o">::</span><span class="kt">Float64</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.01</span><span class="p">,</span><span class="w"> </span><span class="n">input</span><span class="o">::</span><span class="kt">Union</span><span class="p">{</span><span class="kt">Nothing</span><span class="p">,</span><span class="kt">Function</span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">nothing</span><span class="p">)</span><span class="w"></span>
 </pre></div>
 </div>
-<p>returns steady state solution as Array{Float64,1}</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">steadystate()</span></code> function treats the system of ODEs described by the model <code class="docutils literal notranslate"><span class="pre">BSTModel</span></code> as a steady-state problem.</p>
+<p><strong>Fields</strong></p>
+<ul class="simple">
+<li><p><strong>model:</strong> built using the <code class="docutils literal notranslate"><span class="pre">build()</span></code> function as a <code class="docutils literal notranslate"><span class="pre">BSTModel</span></code></p></li>
+<li><p><strong>tspan:</strong> time-span in which the solver is required to run as a <code class="docutils literal notranslate"><span class="pre">Tuple{Float64,Float64}</span></code> (default values for tspan are (0.0,20.0))</p></li>
+<li><p><strong>Δt:</strong> time-steps at which the solver is required to save solutions as a <code class="docutils literal notranslate"><span class="pre">Float64</span></code> object (default is 0.01)</p></li>
+<li><p><strong>input</strong>: <code class="docutils literal notranslate"><span class="pre">Union{Nothing,Function}</span></code> object</p></li>
+</ul>
+<p><strong>Return</strong></p>
+<ul class="simple">
+<li><p>Steady state solution as <code class="docutils literal notranslate"><span class="pre">Array{Float64,1}</span></code>.</p></li>
+<li><p>The steady state solution does not have temporal information.</p></li>
+</ul>
+<hr class="docutils" />
 <p><code class="docutils literal notranslate"><span class="pre">BSTModelKit.morris</span></code> - Method</p>
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">morris</span><span class="p">(</span><span class="n">performance</span><span class="o">::</span><span class="kt">Function</span><span class="p">,</span> <span class="n">L</span><span class="o">::</span><span class="kt">Array</span><span class="p">{</span><span class="kt">Float64</span><span class="p">,</span><span class="mi">1</span><span class="p">},</span> <span class="n">U</span><span class="o">::</span><span class="kt">Array</span><span class="p">{</span><span class="kt">Float64</span><span class="p">,</span><span class="mi">1</span><span class="p">};</span>
-    <span class="n">number_of_samples</span><span class="o">::</span><span class="kt">Int64</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">)</span><span class="o">::</span><span class="kt">Array</span><span class="p">{</span><span class="kt">Float64</span><span class="p">,</span><span class="mi">2</span><span class="p">}</span>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">morris</span><span class="p">(</span><span class="n">performance</span><span class="o">::</span><span class="kt">Function</span><span class="p">,</span><span class="w"> </span><span class="n">L</span><span class="o">::</span><span class="kt">Array</span><span class="p">{</span><span class="kt">Float64</span><span class="p">,</span><span class="mi">1</span><span class="p">},</span><span class="w"> </span><span class="n">U</span><span class="o">::</span><span class="kt">Array</span><span class="p">{</span><span class="kt">Float64</span><span class="p">,</span><span class="mi">1</span><span class="p">};</span><span class="w"></span>
+<span class="w">    </span><span class="n">number_of_samples</span><span class="o">::</span><span class="kt">Int64</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1000</span><span class="p">)</span><span class="o">::</span><span class="kt">Array</span><span class="p">{</span><span class="kt">Float64</span><span class="p">,</span><span class="mi">2</span><span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <p>returns array [means, variances]</p>
+<hr class="docutils" />
 <p><code class="docutils literal notranslate"><span class="pre">BSTModelKit.sobol</span></code> - Method</p>
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">sobol</span><span class="p">(</span><span class="n">performance</span><span class="o">::</span><span class="kt">Function</span><span class="p">,</span> <span class="n">L</span><span class="o">::</span><span class="kt">Array</span><span class="p">{</span><span class="kt">Float64</span><span class="p">,</span><span class="mi">1</span><span class="p">},</span> <span class="n">U</span><span class="o">::</span><span class="kt">Array</span><span class="p">{</span><span class="kt">Float64</span><span class="p">,</span><span class="mi">1</span><span class="p">};</span>
-    <span class="n">number_of_samples</span><span class="o">::</span><span class="kt">Int64</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">orders</span><span class="o">::</span><span class="kt">Array</span><span class="p">{</span><span class="kt">Int64</span><span class="p">,</span><span class="mi">1</span><span class="p">}</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">sobol</span><span class="p">(</span><span class="n">performance</span><span class="o">::</span><span class="kt">Function</span><span class="p">,</span><span class="w"> </span><span class="n">L</span><span class="o">::</span><span class="kt">Array</span><span class="p">{</span><span class="kt">Float64</span><span class="p">,</span><span class="mi">1</span><span class="p">},</span><span class="w"> </span><span class="n">U</span><span class="o">::</span><span class="kt">Array</span><span class="p">{</span><span class="kt">Float64</span><span class="p">,</span><span class="mi">1</span><span class="p">};</span><span class="w"></span>
+<span class="w">    </span><span class="n">number_of_samples</span><span class="o">::</span><span class="kt">Int64</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w"> </span><span class="n">orders</span><span class="o">::</span><span class="kt">Array</span><span class="p">{</span><span class="kt">Int64</span><span class="p">,</span><span class="mi">1</span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">])</span><span class="w"></span>
 </pre></div>
 </div>
 <p>returns???</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">

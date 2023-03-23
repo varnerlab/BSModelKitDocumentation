@@ -335,19 +335,6 @@ title="Print to PDF"
      Build the model object from the model file
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#set-test-values-for-the-model-parameters-in-the-g-matrix-and-alpha-vector">
-     Set test values for the model parameters in the
-     <span class="math notranslate nohighlight">
-      \(G\)
-     </span>
-     -matrix and
-     <span class="math notranslate nohighlight">
-      \(\alpha\)
-     </span>
-     -vector
-    </a>
-   </li>
   </ul>
  </li>
 </ul>
@@ -389,19 +376,6 @@ title="Print to PDF"
      Build the model object from the model file
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#set-test-values-for-the-model-parameters-in-the-g-matrix-and-alpha-vector">
-     Set test values for the model parameters in the
-     <span class="math notranslate nohighlight">
-      \(G\)
-     </span>
-     -matrix and
-     <span class="math notranslate nohighlight">
-      \(\alpha\)
-     </span>
-     -vector
-    </a>
-   </li>
   </ul>
  </li>
 </ul>
@@ -438,44 +412,33 @@ For example, we need to model a metabolic network that consists of a species set
 <section id="build-the-model-object-from-the-model-file">
 <h3>Build the model object from the model file<a class="headerlink" href="#build-the-model-object-from-the-model-file" title="Permalink to this headline">#</a></h3>
 <p>The BST model file hold information to build the model equation. But it does not contain any information about parameter values. We build the model file using the build method:</p>
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">model_dictionary</span> <span class="o">=</span> <span class="n">build</span><span class="p">(</span><span class="n">joinpath</span><span class="p">(</span><span class="n">_PATH_TO_MODELS</span><span class="p">,</span> <span class="s">&quot;Feedback.bst&quot;</span><span class="p">));</span>
-<span class="n">model_dictionary</span>
-<span class="n">model_dictionary</span><span class="p">[</span><span class="s">&quot;list_of_dynamic_species&quot;</span><span class="p">]</span>
+<p>For example, we need to model a linear pathway consisting of successive reactions.
+It contains three static species (E1,E2,E3) and five dynamic species (X1,X2,X3,X4,X5).</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># Setting the path to BST file</span><span class="w"></span>
+<span class="n">path_to_model_file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">joinpath</span><span class="p">(</span><span class="n">pwd</span><span class="p">(),</span><span class="s">&quot;data&quot;</span><span class="p">,</span><span class="s">&quot;Feedback.bst&quot;</span><span class="p">);</span><span class="w"></span>
 
-<span class="c"># Get the gain matrix</span>
-<span class="n">G</span> <span class="o">=</span> <span class="n">model_dictionary</span><span class="p">[</span><span class="s">&quot;G&quot;</span><span class="p">]</span>
+<span class="c"># Build the model</span><span class="w"></span>
+<span class="n">model_object</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">path_to_model_file</span><span class="p">);</span><span class="w"></span>
 
-<span class="c"># Setting initial condition</span>
-<span class="n">icv</span> <span class="o">=</span> <span class="p">[</span><span class="mf">10.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">];</span>
-<span class="n">model_dictionary</span><span class="p">[</span><span class="s">&quot;initial_condition_array&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">icv</span><span class="p">;</span>
-</pre></div>
-</div>
-<p>“Setting values of parameters”</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model_dictionary</span><span class="p">[</span><span class="s2">&quot;G&quot;</span><span class="p">]</span>
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model_dictionary</span><span class="p">[</span><span class="s2">&quot;total_species_list&quot;</span><span class="p">]</span>
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model_dictionary</span><span class="p">[</span><span class="s2">&quot;S&quot;</span><span class="p">]</span>
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model_dictionary</span><span class="p">[</span><span class="s2">&quot;α&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">];</span>
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model_dictionary</span><span class="p">[</span><span class="s2">&quot;static_factors_array&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">];</span>
-</pre></div>
-</div>
-</section>
-<section id="set-test-values-for-the-model-parameters-in-the-g-matrix-and-alpha-vector">
-<h3>Set test values for the model parameters in the <span class="math notranslate nohighlight">\(G\)</span>-matrix and <span class="math notranslate nohighlight">\(\alpha\)</span>-vector<a class="headerlink" href="#set-test-values-for-the-model-parameters-in-the-g-matrix-and-alpha-vector" title="Permalink to this headline">#</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">Z</span><span class="p">)</span> <span class="o">=</span> <span class="n">evaluate</span><span class="p">(</span><span class="n">model_dictionary</span><span class="p">;</span> <span class="n">tspan</span><span class="o">=</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">100.0</span><span class="p">),</span> <span class="n">Δt</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">);</span>
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">X</span>
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plot</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="n">X</span><span class="p">)</span>
+<span class="c"># Get the gain matrix</span><span class="w"></span>
+<span class="n">G</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">model_object</span><span class="o">.</span><span class="n">G</span><span class="w"></span>
+
+<span class="c">#Get the stoichoimetric array</span><span class="w"></span>
+<span class="n">S</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">model_object</span><span class="o">.</span><span class="n">S</span><span class="w"></span>
+
+<span class="c"># Setting initial condition</span><span class="w"></span>
+<span class="n">icv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">10.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="mf">1.1</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">];</span><span class="w"></span>
+<span class="n">model_object</span><span class="o">.</span><span class="n">initial_condition_array</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">icv</span><span class="p">;</span><span class="w"> </span>
+
+<span class="c">#Setting values of α parameters&quot;</span><span class="w"></span>
+<span class="n">model_object</span><span class="o">.</span><span class="n">α</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">10.0</span><span class="p">,</span><span class="w"> </span><span class="mf">10.0</span><span class="p">,</span><span class="w"> </span><span class="mf">10.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1</span><span class="p">];</span><span class="w"></span>
+
+<span class="c">#Setting values of static factors array</span><span class="w"></span>
+<span class="n">model_object</span><span class="o">.</span><span class="n">static_factors_array</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1</span><span class="p">];</span><span class="w"></span>
+
+<span class="c">#Solving and Plotting</span><span class="w"></span>
+<span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="n">X</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">evaluate</span><span class="p">(</span><span class="n">model_object</span><span class="p">;</span><span class="w"> </span><span class="n">tspan</span><span class="o">=</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">100.0</span><span class="p">),</span><span class="w"> </span><span class="n">Δt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.1</span><span class="p">);</span><span class="w"></span>
+<span class="n">plot</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="n">X</span><span class="p">)</span><span class="w"></span>
 </pre></div>
 </div>
 </section>

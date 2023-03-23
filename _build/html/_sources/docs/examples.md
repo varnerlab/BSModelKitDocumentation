@@ -25,42 +25,33 @@ import BSTModelKit.jl
 ### Build the model object from the model file 
 The BST model file hold information to build the model equation. But it does not contain any information about parameter values. We build the model file using the build method: 
 
+For example, we need to model a linear pathway consisting of successive reactions. 
+It contains three static species (E1,E2,E3) and five dynamic species (X1,X2,X3,X4,X5).
+
 ```julia
-model_dictionary = build(joinpath(_PATH_TO_MODELS, "Feedback.bst"));
-model_dictionary
-model_dictionary["list_of_dynamic_species"]
+# Setting the path to BST file
+path_to_model_file = joinpath(pwd(),"data","Feedback.bst");
+
+# Build the model
+model_object = build(path_to_model_file);
 
 # Get the gain matrix
-G = model_dictionary["G"]
+G = model_object.G
+
+#Get the stoichoimetric array
+S = model_object.S
 
 # Setting initial condition
 icv = [10.0, 0.1, 0.1, 1.1, 0.0];
-model_dictionary["initial_condition_array"] = icv;
-```
+model_object.initial_condition_array = icv; 
 
-"Setting values of parameters"
-```
-model_dictionary["G"]
-```
-```
-model_dictionary["total_species_list"]
-```
-```
-model_dictionary["S"]
-```
-```
-model_dictionary["α"] = [0.0, 10.0, 10.0, 10.0, 0.1, 0.1];
-```
-```
-model_dictionary["static_factors_array"] = [0.1, 0.1, 0.1];
-```
-### Set test values for the model parameters in the $G$-matrix and $\alpha$-vector
-```
-(T, X, Z) = evaluate(model_dictionary; tspan=(0.0,100.0), Δt = 0.1);
-```
-```
-X
-```
-```
+#Setting values of α parameters"
+model_object.α = [0.0, 10.0, 10.0, 10.0, 0.1, 0.1];
+
+#Setting values of static factors array
+model_object.static_factors_array = [0.1, 0.1, 0.1];
+
+#Solving and Plotting
+(T, X) = evaluate(model_object; tspan=(0.0,100.0), Δt = 0.1);
 plot(T,X)
 ```
