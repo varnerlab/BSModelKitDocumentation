@@ -25,8 +25,10 @@ import BSTModelKit.jl
 ### Build the model object from the model file 
 The BST model file hold information to build the model equation. But it does not contain any information about parameter values. We build the model file using the build method: 
 
-For example, we need to model a linear pathway consisting of successive reactions. 
-It contains three static species (E1,E2,E3) and five dynamic species (X1,X2,X3,X4,X5).
+For the example, we need to model a linear pathway consisting of successive reactions with a product inhibition mechanism. 
+It contains three static species (E1,E2,E3) and five dynamic species (X1,X2,X3,X4,X5). Besides, the X4 can inhibit the E1. 
+
+<img src="./figs/Fig-Product-Inhibition.png" width="500px" height="150px">
 
 ```julia
 # Setting the path to BST file
@@ -42,7 +44,7 @@ G = model_object.G
 S = model_object.S
 
 # Setting initial condition
-icv = [10.0, 0.1, 0.1, 1.1, 0.0];
+icv = [1.0, 0.1, 0.1, 1.1, 0.0];
 model_object.initial_condition_array = icv; 
 
 #Setting values of α parameters"
@@ -52,6 +54,9 @@ model_object.α = [0.0, 10.0, 10.0, 10.0, 0.1, 0.1];
 model_object.static_factors_array = [0.1, 0.1, 0.1];
 
 #Solving and Plotting
-(T, X) = evaluate(model_object; tspan=(0.0,100.0), Δt = 0.1);
+(T, X) = evaluate(model_object; tspan=(0.0,10.0), Δt = 0.1);
 plot(T,X)
+
 ```
+Here is the plot for example: 
+<img src="./figs/Fig-Example-1.png">
